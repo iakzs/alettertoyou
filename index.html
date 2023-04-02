@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>ILU</title>
+  <title>My Love Declaration</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
@@ -18,10 +18,34 @@
       color: #ff00ff;
       /* other styles */
     }
+
+    .water-animation {
+      display: inline-block;
+      position: relative;
+      animation-name: water;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    @keyframes water {
+      0% {
+        top: 0;
+      }
+      50% {
+        top: -5px;
+      }
+      100% {
+        top: 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1 class="animate__animated animate__heartBeat animate__delay-1s animate__duration-120s">I like you ❤</h1>
-  <p>by iakzs</p>
+  <h1 class="animate__animated animate__heartBeat animate__delay-1s animate__duration-5s">I like you ❤</h1>
+  <p>
+    by
+    <span class="water-animation">iakzs</span>
+  </p>
 </body>
 </html>
