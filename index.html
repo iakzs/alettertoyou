@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Epic Love Declaration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,900;0,1000;1,900;1,1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<style>
+  .heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    animation: heartbeat 1s infinite;
+  }
+
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  body {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    font-family: 'Delicious Handrawn', cursive;
+    font-size: 5em;
+    color: #ff00ff;
+    margin-top: 50%;
+  }
+
+  p {
+    font-size: 4em;
+    font-family: 'Nunito', sans-serif;
+    margin-top: 100%;
+  }
+
+  a {
+    font-size: 1em;
+    font-family: 'Nunito', sans-serif;
+    color: #ff00ff;
+    margin-top: 100%;
+  }
+</style>
+
+<body>
+  <h1 class="animate__animated animate__heartBeat animate__infinite">I like you ❤</h1>
+  <p style="font-family: 'Nunito', sans-serif;">
+    <span class="animate__animated animate__zoomIn">see src in</span>
+    <a href="https://github.com/iakzs/alettertoyou">here</a>
+  </p>
+  <button id="clearBtn">Clear ❤</button>
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      document.body.appendChild(heart);
+    }
+
+    setInterval(createHeart, 1000);
+
+    const clearBtn = document.getElementById('clearBtn');
+    clearBtn.addEventListener('click', function() {
+      const hearts = document.querySelectorAll('.heart');
+      hearts.forEach(function(heart) {
+        heart.remove();
+      });
+    });
+  </script>
+</body>
+</html>
