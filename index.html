@@ -32,11 +32,6 @@
     }
   }
   
-  #clearBtn {
-  font-size: 20px;
-  margin-top: 150%;
-}
-
 
   body {
       display: flex;
@@ -58,7 +53,6 @@
 
 <body>
   <h1 class="animate__animated animate__heartBeat animate__infinite">I like you ❤</h1>
-  <button id="clearBtn">Clear ❤</button>
   <script>
     function createHeart() {
       const heart = document.createElement('div');
@@ -69,15 +63,7 @@
       document.body.appendChild(heart);
     }
 
-    setInterval(createHeart, 1000);
-
-    const clearBtn = document.getElementById('clearBtn');
-    clearBtn.addEventListener('click', function() {
-      const hearts = document.querySelectorAll('.heart');
-      hearts.forEach(function(heart) {
-        heart.remove();
-      });
-    });
+    setInterval(createHeart, 500);
   </script>
 </body>
 </html>
