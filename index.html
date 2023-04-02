@@ -14,6 +14,30 @@
 
 </head>
 <style>
+      .heart {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        background-image: url('https://i.imgur.com/TQIa7VH.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        animation: heartbeat 1s infinite;
+      }
+
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
 body {
   text-align: center;
   margin: 0;
@@ -45,5 +69,24 @@ p {
     <span class="animate__animated animate__zoomIn">see src in</span>
     <a href="https://github.com/iakzs/alettertoyou">here</a>
   </p>
+  <button id="clearBtn">Clear ❤</button>
+   <script>
+      function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        document.body.appendChild(heart);
+      }
+
+      setInterval(createHeart, 1000);
+
+      const clearBtn = document.getElementById('clearBtn');
+      clearBtn.addEventListener('click', function() {
+        const hearts = document.querySelectorAll('.heart');
+        hearts.forEach(function(heart) {
+          heart.remove();
+        });
+      });
+    </script>
+  
 </body>
 </html>
