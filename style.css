@@ -1,0 +1,33 @@
+body {
+  background-image: url('https://iakzs.is-a.dev/alettertoyou/bckgrnd.jpg');
+  background-size: cover;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Delicious Handrawn', cursive;
+  font-size: 5em;
+  color: #ff00ff;
+}
+
+p {
+  font-size: 4em;
+  font-family: 'Nunito', sans-serif;
+  margin-top: 100%;
+}
+  a {
+  font-size: 1em;
+  font-family: 'Nunito', sans-serif;
+  color: #ff00ff;
+  }
