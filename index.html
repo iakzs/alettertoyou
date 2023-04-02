@@ -73,6 +73,8 @@
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.innerHTML = '❤️';
+        heart.style.top = Math.random() * 100 + '%';
+  heart.style.left = Math.random() * 100 + '%';
       document.body.appendChild(heart);
     }
 
