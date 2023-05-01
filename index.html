@@ -18,6 +18,11 @@
     transform: translate(-50%, -50%);
     font-size: 3em;
     animation: heartbeat 1s infinite;
+    transition: opacity 1s;
+  }
+
+  .heart.fade-out {
+    opacity: 0;
   }
 
   @keyframes heartbeat {
@@ -31,39 +36,49 @@
       transform: scale(1);
     }
   }
-  
 
   body {
       display: flex;
-  justify-content: center;
-  align-items: center;
+      justify-content: center;
+      align-items: center;
   }
 
   h1 {
     font-family: 'Delicious Handrawn', cursive;
-    font-size: 5em;
+    font-size: 10vw;
     color: #ff00ff;
-    margin-top: 20%;
+    margin-top: 10%;
     text-align: center;
     
   }
-
-  
 </style>
 
 <body>
   <h1 class="animate__animated animate__heartBeat animate__infinite">I like you ❤</h1>
-  <script>
-    function createHeart() {
+  
+<script>
+function createHeart(x, y) {
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.innerHTML = '❤️';
-        heart.style.top = Math.random() * 100 + '%';
-  heart.style.left = Math.random() * 100 + '%';
+      heart.style.top = y + 'px';
+      heart.style.left = x + 'px';
       document.body.appendChild(heart);
-    }
 
-    setInterval(createHeart, 500);
-  </script>
+      setTimeout(() => {
+        heart.classList.add('fade-out');
+        setTimeout(() => {
+          heart.remove();
+        }, 1000);
+      }, 2000);
+}
+
+document.body.addEventListener('click', (event) => {
+   createHeart(event.clientX, event.clientY);
+});
+
+setInterval(() => {createHeart(Math.random() * window.innerWidth, Math.random() * window.innerHeight)},500);
+</script>
+
 </body>
 </html>
