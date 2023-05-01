@@ -6,6 +6,8 @@
 <body>
   <h1>Customize Page</h1>
   <form id="customize-form">
+    <label for="title-input">Title:</label>
+    <input type="text" id="title-input" name="title"><br><br>
     <label for="text-input">Text:</label>
     <input type="text" id="text-input" name="text"><br><br>
     <label for="emoji-input">Emoji:</label>
@@ -24,7 +26,8 @@
       const emoji = document.querySelector('#emoji-input').value;
       const color = document.querySelector('#color-input').value;
       const background = document.querySelector('#background-input').value;
-      const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}`;
+      const title = document.querySelector('#title-input').value;
+      const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&title=${encodeURIComponent(title)}`;
       window.location.href = url;
     });
   </script>
