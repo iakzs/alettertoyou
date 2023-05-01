@@ -79,8 +79,8 @@
       heart.classList.add('fade-out');
       setTimeout(() => {
         heart.remove();
-      }, 1000);
-    }, 2000);
+      }, 30000);
+    }, 60000);
   }
 
   document.body.addEventListener('click', (event) => {
@@ -90,6 +90,9 @@
   setInterval(() => {
     createHeart(Math.random() * window.innerWidth, Math.random() * window.innerHeight)
   }, 500);
+const title = urlParams.get('title');
+
+document.title = title;
 </script>
 </body>
 </html>
