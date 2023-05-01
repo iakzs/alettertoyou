@@ -57,28 +57,39 @@
   <h1 class="animate__animated animate__heartBeat animate__infinite">I like you ❤</h1>
   
 <script>
-function createHeart(x, y) {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.innerHTML = '❤️';
-      heart.style.top = y + 'px';
-      heart.style.left = x + 'px';
-      document.body.appendChild(heart);
+  const urlParams = new URLSearchParams(window.location.search);
+  const text = urlParams.get('text') || 'I like you';
+  const emoji = urlParams.get('emoji') || '❤️';
+  const color = urlParams.get('color') || '#ff00ff';
+  const background = urlParams.get('background') || '#fff';
 
+  document.querySelector('h1').innerHTML = text + ' ' + emoji;
+  document.querySelector('h1').style.color = color;
+  document.body.style.backgroundColor = background;
+
+  function createHeart(x, y) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = emoji;
+    heart.style.top = y + 'px';
+    heart.style.left = x + 'px';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.classList.add('fade-out');
       setTimeout(() => {
-        heart.classList.add('fade-out');
-        setTimeout(() => {
-          heart.remove();
-        }, 1000);
-      }, 2000);
-}
+        heart.remove();
+      }, 1000);
+    }, 2000);
+  }
 
-document.body.addEventListener('click', (event) => {
-   createHeart(event.clientX, event.clientY);
-});
+  document.body.addEventListener('click', (event) => {
+    createHeart(event.clientX, event.clientY);
+  });
 
-setInterval(() => {createHeart(Math.random() * window.innerWidth, Math.random() * window.innerHeight)},500);
+  setInterval(() => {
+    createHeart(Math.random() * window.innerWidth, Math.random() * window.innerHeight)
+  }, 500);
 </script>
-
 </body>
 </html>
