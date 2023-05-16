@@ -16,20 +16,23 @@
     <input type="color" id="color-input" name="color"><br><br>
     <label for="background-input">Background Color:</label>
     <input type="color" id="background-input" name="background"><br><br>
+    <label for="background2-input">Background Color 2:</label>
+    <input type="color" id="background2-input" name="background2"><br><br>
     <input type="submit" value="Submit">
   </form>
 
   <script>
-    document.querySelector('#customize-form').addEventListener('submit', (event) => {
-      event.preventDefault();
-      const text = document.querySelector('#text-input').value;
-      const emoji = document.querySelector('#emoji-input').value;
-      const color = document.querySelector('#color-input').value;
-      const background = document.querySelector('#background-input').value;
-      const title = document.querySelector('#title-input').value;
-      const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&title=${encodeURIComponent(title)}`;
-      window.location.href = url;
-    });
+document.querySelector('#customize-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const text = document.querySelector('#text-input').value;
+  const emoji = document.querySelector('#emoji-input').value;
+  const color = document.querySelector('#color-input').value;
+  const background = document.querySelector('#background-input').value;
+  const background2 = document.querySelector('#background2-input').value;
+  const title = document.querySelector('#title-input').value;
+  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}`;
+  window.location.href = url;
+});
   </script>
 </body>
 </html>
