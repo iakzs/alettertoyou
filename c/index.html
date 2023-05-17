@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Customize Page</title>
+  <title>Customize ALTY</title>
 </head>
 <body>
-  <h1>Customize Page</h1>
+  <h1>Customize alettertoyou</h1>
   <form id="customize-form">
     <label for="title-input">Title:</label>
     <input type="text" id="title-input" name="title"><br><br>
@@ -14,6 +14,8 @@
     <input type="text" id="emoji-input" name="emoji"><br><br>
     <label for="color-input">Text Color:</label>
     <input type="color" id="color-input" name="color"><br><br>
+    <label for="rainbow-input">Rainbow Background:</label>
+    <input type="checkbox" id="rainbow-input" name="rainbow"><br><br>
     <label for="background-input">Background Color:</label>
     <input type="color" id="background-input" name="background"><br><br>
     <label for="background2-input">Background Color 2:</label>
@@ -30,7 +32,8 @@ document.querySelector('#customize-form').addEventListener('submit', (event) => 
   const background = document.querySelector('#background-input').value;
   const background2 = document.querySelector('#background2-input').value;
   const title = document.querySelector('#title-input').value;
-  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}`;
+  const rainbow = document.querySelector('#rainbow-input').checked;
+  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&background=rainbow`;
   window.location.href = url;
 });
   </script>
