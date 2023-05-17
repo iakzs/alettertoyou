@@ -69,6 +69,14 @@
 } else {
   document.body.style.backgroundColor = background;
 }
+  if (background === 'rainbow') {
+  document.body.style.background = 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)';
+  document.body.style.backgroundSize = '400% 400%';
+  document.body.style.animation = 'gradient 15s ease infinite';
+} else {
+
+  document.body.style.backgroundColor = background;
+}
   document.querySelector('h1').innerHTML = text + ' ' + emoji;
   document.querySelector('h1').style.color = color;
 
