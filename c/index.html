@@ -24,6 +24,11 @@
   </form>
 
   <script>
+ document.querySelector('#rainbow-input').addEventListener('change', (event) => {
+  const rainbowChecked = event.target.checked;
+  document.querySelector('#background-input').disabled = rainbowChecked;
+  document.querySelector('#background2-input').disabled = rainbowChecked;
+});
 document.querySelector('#customize-form').addEventListener('submit', (event) => {
   event.preventDefault();
   const text = document.querySelector('#text-input').value;
