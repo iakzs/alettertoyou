@@ -116,7 +116,11 @@
   }, 500);
 const title = urlParams.get('title');
 
+    if (urlParams.get('title') === '') {
+  document.title = epic;
+} else {
 document.title = title;
+}
 </script>
 </body>
 </html>
