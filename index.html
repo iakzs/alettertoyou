@@ -6,7 +6,7 @@
   <title>alty</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Roboto&family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
@@ -73,6 +73,7 @@
   const color = urlParams.get('color') || '#000000';
   const background = urlParams.get('background') || '#fff';
   const background2 = urlParams.get('background2');
+  const font = urlParams.get('font') || 'Delicious Handrawn';
 
  if (background2) {
   document.body.style.background = `linear-gradient(to right, ${background}, ${background2})`;
@@ -89,6 +90,7 @@
 }
   document.querySelector('h1').innerHTML = text + ' ' + emoji;
   document.querySelector('h1').style.color = color;
+  document.querySelector('h1').style.fontFamily = font;
 
 
   function createHeart(x, y) {

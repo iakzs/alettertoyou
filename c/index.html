@@ -20,6 +20,10 @@
     <input type="color" id="background-input" name="background"><br><br>
     <label for="background2-input">Background Color 2:</label>
     <input type="color" id="background2-input" name="background2"><br><br>
+    <select id="font-input" name="font">
+      <option value="Delicious Handrawn">Delicious Handrawn</option>
+      <option value="Roboto">Roboto</option>
+      <option value="Open Sans">Open Sans</option><br><br>
     <input type="submit" value="Submit">
   </form>
 
@@ -38,7 +42,8 @@ document.querySelector('#customize-form').addEventListener('submit', (event) => 
   const background2 = document.querySelector('#background2-input').value;
   const title = document.querySelector('#title-input').value;
   const rainbow = document.querySelector('#rainbow-input').checked;
-  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}`;
+  const font = document.querySelector('#font-input').value;
+  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}`;
   window.location.href = url;
 });
   </script>
