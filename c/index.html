@@ -14,16 +14,12 @@
     <input type="text" id="emoji-input" name="emoji"><br><br>
     <label for="color-input">Text Color:</label>
     <input type="color" id="color-input" name="color"><br><br>
-    <label for="rainbow-input">Going to use background image?</label>
-    <input type="checkbox" id="imagee-input" name="yesimg"><br><br>
     <label for="rainbow-input">Rainbow Background:</label>
     <input type="checkbox" id="rainbow-input" name="rainbow"><br><br>
     <label for="background-input">Background Color:</label>
     <input type="color" id="background-input" name="background"><br><br>
     <label for="background2-input">Background Color 2:</label>
     <input type="color" id="background2-input" name="background2"><br><br>
-    <label for="background-file-input">Background Image:</label>
-    <input type="file" id="background-image-input" name="background-image">
     <label for="background2-input">Font: (beta)</label>
     <select id="font-input" name="font">
       <option value="Delicious Handrawn">Delicious Handrawn</option>
@@ -32,40 +28,25 @@
     <input type="submit" value="Submit">
   </form>
 
-<script>
-    document.querySelector('#rainbow-input').addEventListener('change', (event) => {
-      const rainbowChecked = event.target.checked;
-      document.querySelector('#background-input').disabled = rainbowChecked;
-      document.querySelector('#background2-input').disabled = rainbowChecked;
-    });
-    document.querySelector('#imagee-input').addEventListener('change', (event) => {
-      const yesimgChecked = event.target.checked;
-      document.querySelector('#background-input').disabled = yesimgChecked;
-      document.querySelector('#background2-input').disabled = yesimgChecked;
-      document.querySelector('#background-image-input').disabled = yesimgChecked;
-    });
-    document.querySelector('#customize-form').addEventListener('submit', (event) => {
-      event.preventDefault();
-      const text = document.querySelector('#text-input').value;
-      const emoji = document.querySelector('#emoji-input').value;
-      const color = document.querySelector('#color-input').value;
-      const background = document.querySelector('#background-input').value;
-      const background2 = document.querySelector('#background2-input').value;
-      const title = document.querySelector('#title-input').value;
-      const rainbow = document.querySelector('#rainbow-input').checked;
-      const font = document.querySelector('#font-input').value;
-      const file = document.querySelector('#background-image-input').files[0];
-      const reader = new FileReader();
-
-      reader.addEventListener('load', (e) => {
-        const imageDataUrl = e.target.result;
-        const image = imageDataUrl;
-        const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&image=${encodeURIComponent(image)}`;
-        window.location.href = url;
-      });
-
-      reader.readAsDataURL(file);
-    });
+  <script>
+ document.querySelector('#rainbow-input').addEventListener('change', (event) => {
+  const rainbowChecked = event.target.checked;
+  document.querySelector('#background-input').disabled = rainbowChecked;
+  document.querySelector('#background2-input').disabled = rainbowChecked;
+});
+document.querySelector('#customize-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const text = document.querySelector('#text-input').value;
+  const emoji = document.querySelector('#emoji-input').value;
+  const color = document.querySelector('#color-input').value;
+  const background = document.querySelector('#background-input').value;
+  const background2 = document.querySelector('#background2-input').value;
+  const title = document.querySelector('#title-input').value;
+  const rainbow = document.querySelector('#rainbow-input').checked;
+  const font = document.querySelector('#font-input').value;
+  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}`;
+  window.location.href = url;
+});
   </script>
 </body>
 </html>
