@@ -5,7 +5,7 @@
 </head>
 <body>
   <h1>Customize alettertoyou</h1>
-  <form id="customize-form">
+  <form id="customize-form" enctype="multipart/form-data">
     <label for="title-input">Title:</label>
     <input type="text" id="title-input" name="title"><br><br>
     <label for="text-input">Text:</label>
@@ -20,6 +20,8 @@
     <input type="color" id="background-input" name="background"><br><br>
     <label for="background2-input">Background Color 2:</label>
     <input type="color" id="background2-input" name="background2"><br><br>
+    <label for="file-input">File:</label>
+    <input type="file" id="file-input" name="file"><br><br>
     <label for="background2-input">Font: (beta)</label>
     <select id="font-input" name="font">
       <option value="Delicious Handrawn">Delicious Handrawn</option>
@@ -36,6 +38,7 @@
 });
 document.querySelector('#customize-form').addEventListener('submit', (event) => {
   event.preventDefault();
+
   const text = document.querySelector('#text-input').value;
   const emoji = document.querySelector('#emoji-input').value;
   const color = document.querySelector('#color-input').value;
@@ -44,9 +47,33 @@ document.querySelector('#customize-form').addEventListener('submit', (event) => 
   const title = document.querySelector('#title-input').value;
   const rainbow = document.querySelector('#rainbow-input').checked;
   const font = document.querySelector('#font-input').value;
-  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}`;
-  window.location.href = url;
+
+  const fileInput = document.querySelector('#file-input');
+  const file = fileInput.files[0];
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('text', text);
+  formData.append('emoji', emoji);
+  formData.append('color', color);
+  formData.append('background', background);
+  formData.append('background2', background2);
+  formData.append('title', title);
+  formData.append('rainbow', rainbow);
+  formData.append('font', font);
+
+  fetch('/upload', {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => response.json())
+    .then(data => {
+      const imageUrl = data.fileUrl;
+    })
+    .catch(error => {
+      console.error('Error uploading file:', error);
+    });
 });
+
   </script>
 </body>
 </html>
