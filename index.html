@@ -36,21 +36,22 @@
       transform: scale(1);
     }
   }
-@keyframes rainbow {
-  0% {background: red;}
-  14% {background: orange;}
-  28% {background: yellow;}
-  42% {background: green;}
-  57% {background: blue;}
-  71% {background: indigo;}
-  85% {background: violet;}
-  100% {background: red;}
-}
+
+  @keyframes rainbow {
+    0% {background: red;}
+    14% {background: orange;}
+    28% {background: yellow;}
+    42% {background: green;}
+    57% {background: blue;}
+    71% {background: indigo;}
+    85% {background: violet;}
+    100% {background: red;}
+  }
+
   body {
-      animation: 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   h1 {
@@ -59,67 +60,72 @@
     color: #ff00ff;
     margin-top: 10%;
     text-align: center;
-    
   }
 </style>
 
 <body>
   <h1 class="animate__animated animate__heartBeat animate__infinite">I like Github</h1>
   
-<script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const text = urlParams.get('text') || '';
-  const emoji = urlParams.get('emoji') || '';
-  const color = urlParams.get('color') || '#000000';
-  const background = urlParams.get('background') || '#fff';
-  const background2 = urlParams.get('background2');
-  const font = urlParams.get('font') || 'Delicious Handrawn';
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const text = urlParams.get('text') || '';
+    const emoji = urlParams.get('emoji') || '';
+    const color = urlParams.get('color') || '#000000';
+    const background = urlParams.get('background') || '#fff';
+    const background2 = urlParams.get('background2');
+    const font = urlParams.get('font') || 'Delicious Handrawn';
+    const imageUrl = urlParams.get('fileUrl'); // Assuming you pass the file URL as a parameter
 
- if (background2) {
-  document.body.style.background = `linear-gradient(to right, ${background}, ${background2})`;
-} else {
-  document.body.style.backgroundColor = background;
-}
-  if (urlParams.get('israinbow') === 'true') {
-  document.body.style.background = 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)';
-  document.body.style.backgroundSize = '400% 400%';
-  document.body.style.animation = 'rainbow 5s linear infinite';
-} else {
+    if (background2) {
+      document.body.style.background = `linear-gradient(to right, ${background}, ${background2})`;
+    } else {
+      document.body.style.backgroundColor = background;
+    }
 
-  document.body.style.backgroundColor = background;
-}
-  document.querySelector('h1').innerHTML = text + ' ' + emoji;
-  document.querySelector('h1').style.color = color;
-  document.querySelector('h1').style.fontFamily = font;
+    if (urlParams.get('israinbow') === 'true') {
+      document.body.style.background = 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)';
+      document.body.style.backgroundSize = '400% 400%';
+      document.body.style.animation = 'rainbow 5s linear infinite';
+    } else {
+      document.body.style.backgroundColor = background;
+    }
 
+    document.querySelector('h1').innerHTML = text + ' ' + emoji;
+    document.querySelector('h1').style.color = color;
+    document.querySelector('h1').style.fontFamily = font;
 
-  function createHeart(x, y) {
-    const heart = document.createElement('div');
-    heart.classList.add('heart');
-    heart.innerHTML = emoji;
-    heart.style.top = y + 'px';
-    heart.style.left = x + 'px';
-    document.body.appendChild(heart);
+    function createHeart(x, y) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = emoji;
+      heart.style.top = y + 'px';
+      heart.style.left = x + 'px';
+      document.body.appendChild(heart);
 
-    setTimeout(() => {
-      heart.classList.add('fade-out');
       setTimeout(() => {
-        heart.remove();
-      }, 30000);
-    }, 60000);
-  }
+        heart.classList.add('fade-out');
+        setTimeout(() => {
+          heart.remove();
+        }, 30000);
+      }, 60000);
+    }
 
-  document.body.addEventListener('click', (event) => {
-    createHeart(event.clientX, event.clientY);
-  });
+    document.body.addEventListener('click', (event) => {
+      createHeart(event.clientX, event.clientY);
+    });
 
-  setInterval(() => {
-    createHeart(Math.random() * window.innerWidth, Math.random() * window.innerHeight)
-  }, 500);
-const title = urlParams.get('title');
+    setInterval(() => {
+      createHeart(Math.random() * window.innerWidth, Math.random() * window.innerHeight)
+    }, 500);
 
-document.title = title;
+    const title = urlParams.get('title');
+    document.title = title;
 
-</script>
+    // Set background image if the file URL is provided
+    if (imageUrl) {
+      document.body.style.backgroundImage = `url('${imageUrl}')`;
+      document.body.style.backgroundSize = 'cover';
+    }
+  </script>
 </body>
 </html>
