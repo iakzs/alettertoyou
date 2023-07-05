@@ -61,7 +61,7 @@ document.querySelector('#customize-form').addEventListener('submit', (event) => 
   formData.append('rainbow', rainbow);
   formData.append('font', font);
 
-  fetch('/upload', {
+  fetch('iakzsimgs.duckdns.org:3000/upload', {
     method: 'POST',
     body: formData
   })
