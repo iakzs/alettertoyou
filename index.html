@@ -74,7 +74,6 @@
     const background = urlParams.get('background') || '#fff';
     const background2 = urlParams.get('background2');
     const font = urlParams.get('font') || 'Delicious Handrawn';
-    const imageUrl = urlParams.get('fileUrl'); // Assuming you pass the file URL as a parameter
 
     if (background2) {
       document.body.style.background = `linear-gradient(to right, ${background}, ${background2})`;
@@ -121,11 +120,18 @@
     const title = urlParams.get('title');
     document.title = title;
 
-    // Set background image if the file URL is provided
-    if (imageUrl) {
-      document.body.style.backgroundImage = `url('${imageUrl}')`;
-      document.body.style.backgroundSize = 'cover';
-    }
+   fetch('https://iakzsimgs.duckdns.org/getFileUrl') // Replace with your server URL
+      .then(response => response.json())
+      .then(data => {
+        const imageUrl = data.fileUrl;
+        if (imageUrl) {
+          document.body.style.backgroundImage = `url('${imageUrl}')`;
+          document.body.style.backgroundSize = 'cover';
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching file URL:', error);
+      });
   </script>
 </body>
 </html>
