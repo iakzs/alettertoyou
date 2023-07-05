@@ -68,6 +68,8 @@ document.querySelector('#customize-form').addEventListener('submit', (event) => 
     .then(response => response.json())
     .then(data => {
       const imageUrl = data.fileUrl;
+      const uploadedImage = document.querySelector('#uploaded-image');
+      uploadedImage.src = imageUrl;
     })
     .catch(error => {
       console.error('Error uploading file:', error);
