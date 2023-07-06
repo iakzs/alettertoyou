@@ -120,7 +120,7 @@
     const title = urlParams.get('title');
     document.title = title;
 
-   fetch('https://iakzsimgss.duckdns.org/getFileUrl')
+   fetch('https://iakzsimgss.duckdns.org:3000/getFileUrl')
       .then(response => response.json())
       .then(data => {
         const imageUrl = data.fileUrl;
