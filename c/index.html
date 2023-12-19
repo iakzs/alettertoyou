@@ -25,23 +25,8 @@
       <option value="Delicious Handrawn">Delicious Handrawn</option>
       <option value="Roboto">Roboto</option>
       <option value="Open Sans">Open Sans</option><br><br>
-    <label for="heart-option">Choose Heart Customization:</label><br>
-    <input type="radio" id="color-option" name="heartOption" value="color">
-    <label for="color-option">Color</label><br>
-    <input type="radio" id="emoji-option" name="heartOption" value="emoji">
-    <label for="emoji-option">Emoji</label><br><br>
-
-    <div id="heart-color">
-      <label for="heart-color-input">Heart Color:</label>
-      <input type="color" id="heart-color-input" name="heartColor"><br><br>
-    </div>
-
-    <div id="heart-emoji" style="display: none;">
-      <label for="heart-emoji-input">Heart Emoji:</label>
-      <input type="text" id="heart-emoji-input" name="heartEmoji"><br><br>
-    </div>
-      <input type="submit" value="Submit"><br><br>
-    </form>
+    <input type="submit" value="Submit"><br><br>
+  </form>
 
   <script>
  document.querySelector('#rainbow-input').addEventListener('change', (event) => {
@@ -49,17 +34,6 @@
   document.querySelector('#background-input').disabled = rainbowChecked;
   document.querySelector('#background2-input').disabled = rainbowChecked;
 });
-document.querySelector('input[name="heartOption"]').addEventListener('change', function() {
-  const heartOption = document.querySelector('input[name="heartOption"]:checked').value;
-  if (heartOption === "color") {
-    document.getElementById('heart-color').style.display = 'block';
-    document.getElementById('heart-emoji').style.display = 'none';
-  } else {
-    document.getElementById('heart-color').style.display = 'none';
-    document.getElementById('heart-emoji').style.display = 'block';
-  }
-});
-
 document.querySelector('#customize-form').addEventListener('submit', (event) => {
   event.preventDefault();
   const text = document.querySelector('#text-input').value;
@@ -70,19 +44,7 @@ document.querySelector('#customize-form').addEventListener('submit', (event) => 
   const title = document.querySelector('#title-input').value;
   const rainbow = document.querySelector('#rainbow-input').checked;
   const font = document.querySelector('#font-input').value;
-  const heartEmoji = document.querySelector('#heart-emoji-input').value;
-  const heartColor = document.querySelector('#heart-color-input').value;
-  const heartOption = document.querySelector('input[name="heartOption"]:checked').value;
-  let heartParam = "";
-  if (heartOption === "color") {
-    const heartColor = document.querySelector('#heart-color-input').value;
-    heartParam = `&heartColor=${encodeURIComponent(heartColor)}`;
-  } else {
-    const heartEmoji = document.querySelector('#heart-emoji-input').value;
-    heartParam = `&heartEmoji=${encodeURIComponent(heartEmoji)}`;
-  }
-
-  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&heartEmoji=${encodeURIComponent(heartEmoji)}${heartParam}`;
+  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}`;
   window.location.href = url;
 });
 
