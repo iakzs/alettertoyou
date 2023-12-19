@@ -64,6 +64,10 @@
 </style>
 
 <body>
+  <div class="bg-container">
+    <img class="bg-item" id="bg-image" alt="Background Image">
+    <video class="bg-item" id="bg-video" muted loop autoplay></video>
+  </div>
   <h1 class="animate__animated animate__heartBeat animate__infinite">I like Github</h1>
   
   <script>
@@ -74,7 +78,21 @@
     const background = urlParams.get('background') || '#fff';
     const background2 = urlParams.get('background2');
     const font = urlParams.get('font') || 'Delicious Handrawn';
-
+    const borderStyle = urlParams.get('borderStyle');
+    const animationType = urlParams.get('animationType');
+    const imageUrl = urlParams.get('imageUrl');
+    const videoUrl = urlParams.get('videoUrl');
+    
+    if (imageUrl) {
+      const bgImage = document.getElementById('bg-image');
+      bgImage.src = imageUrl;
+      bgImage.classList.add('show-bg');
+    } else if (videoUrl) {
+      const bgVideo = document.getElementById('bg-video');
+      bgVideo.src = videoUrl;
+      bgVideo.classList.add('show-bg');
+    }
+    
     if (background2) {
       document.body.style.background = `linear-gradient(to right, ${background}, ${background2})`;
     } else {
