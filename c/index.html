@@ -25,6 +25,23 @@
       <option value="Delicious Handrawn">Delicious Handrawn</option>
       <option value="Roboto">Roboto</option>
       <option value="Open Sans">Open Sans</option><br><br>
+    <label for="border-style-input">Border Style:</label>
+    <select id="border-style-input" name="borderStyle">
+      <option value="solid">Solid</option>
+      <option value="dotted">Dotted</option>
+      <option value="none">None</option>
+    </select><br><br>
+    <label for="animation-type">Select Animation:</label>
+    <select id="animation-type" name="animationType">
+      <option value="animate__fadeIn">Fade In</option>
+      <option value="animate__zoomIn">Zoom In</option>
+      <option value="none">None</option>
+    </select><br><br>
+    <div id="dynamic-content"></div><br><br>
+    <label for="image-url">Image URL:</label>
+    <input type="text" id="image-url" name="imageUrl"><br><br>
+    <label for="video-url">Video URL:</label>
+    <input type="text" id="video-url" name="videoUrl"><br><br>
     <input type="submit" value="Submit"><br><br>
   </form>
 
@@ -44,7 +61,11 @@ document.querySelector('#customize-form').addEventListener('submit', (event) => 
   const title = document.querySelector('#title-input').value;
   const rainbow = document.querySelector('#rainbow-input').checked;
   const font = document.querySelector('#font-input').value;
-  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}`;
+  const borderStyle = document.querySelector('#border-style-input').value;
+  const animationType = document.querySelector('#animation-type').value;
+  const imageUrl = document.querySelector('#image-url').value;
+  const videoUrl = document.querySelector('#video-url').value;
+  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&borderStyle=${encodeURIComponent(borderStyle)}&animationType=${encodeURIComponent(animationType)}&imageUrl=${encodeURIComponent(imageUrl)}&videoUrl=${encodeURIComponent(videoUrl)}`;
   window.location.href = url;
 });
 
