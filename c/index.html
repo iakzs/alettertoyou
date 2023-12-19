@@ -82,7 +82,7 @@ document.querySelector('#customize-form').addEventListener('submit', (event) => 
     heartParam = `&heartEmoji=${encodeURIComponent(heartEmoji)}`;
   }
 
-  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&heartEmoji=${encodeURIComponent(heartEmoji)}&heartColor=${encodeURIComponent(heartColor)}`;
+  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&heartEmoji=${encodeURIComponent(heartEmoji)}${heartParam}`;
   window.location.href = url;
 });
 
