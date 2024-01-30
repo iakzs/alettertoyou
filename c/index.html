@@ -26,10 +26,6 @@
       <option value="Roboto">Roboto</option>
       <option value="Open Sans">Open Sans</option><br><br>
     <div id="dynamic-content"></div><br><br>
-    <label for="image-url">Image URL:</label>
-    <input type="text" id="image-url" name="imageUrl"><br><br>
-    <label for="video-url">Video URL:</label>
-    <input type="text" id="video-url" name="videoUrl"><br><br>
     <input type="submit" value="Submit"><br><br>
   </form>
 
@@ -49,11 +45,7 @@ document.querySelector('#customize-form').addEventListener('submit', (event) => 
   const title = document.querySelector('#title-input').value;
   const rainbow = document.querySelector('#rainbow-input').checked;
   const font = document.querySelector('#font-input').value;
-  const borderStyle = document.querySelector('#border-style-input').value;
-  const animationType = document.querySelector('#animation-type').value;
-  const imageUrl = document.querySelector('#image-url').value;
-  const videoUrl = document.querySelector('#video-url').value;
-  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&borderStyle=${encodeURIComponent(borderStyle)}&animationType=${encodeURIComponent(animationType)}&imageUrl=${encodeURIComponent(imageUrl)}&videoUrl=${encodeURIComponent(videoUrl)}`;
+  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}`;
   window.location.href = url;
 });
 
