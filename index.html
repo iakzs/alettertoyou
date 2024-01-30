@@ -78,20 +78,7 @@
     const background = urlParams.get('background') || '#fff';
     const background2 = urlParams.get('background2');
     const font = urlParams.get('font') || 'Delicious Handrawn';
-    const borderStyle = urlParams.get('borderStyle');
-    const animationType = urlParams.get('animationType');
-    const imageUrl = urlParams.get('imageUrl');
-    const videoUrl = urlParams.get('videoUrl');
-    
-    if (imageUrl) {
-      const bgImage = document.getElementById('bg-image');
-      bgImage.src = imageUrl;
-      bgImage.classList.add('show-bg');
-    } else if (videoUrl) {
-      const bgVideo = document.getElementById('bg-video');
-      bgVideo.src = videoUrl;
-      bgVideo.classList.add('show-bg');
-    }
+
     
     if (background2) {
       document.body.style.background = `linear-gradient(to right, ${background}, ${background2})`;
@@ -138,18 +125,6 @@
     const title = urlParams.get('title');
     document.title = title;
 
-   //fetch('https://iakzsimgss.duckdns.org:3000/getFileUrl')
-      //.then(response => response.json())
-      //.then(data => {
-        //const imageUrl = data.fileUrl;
-        //if (imageUrl) {
-          //document.body.style.backgroundImage = `url('${imageUrl}')`;
-          //document.body.style.backgroundSize = 'cover';
-        //}
-      //})
-      //.catch(error => {
-        //console.error('Error fetching file URL:', error);
-      //});
   </script>
 </body>
 </html>
