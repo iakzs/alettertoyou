@@ -27,9 +27,47 @@
       <option value="Open Sans">Open Sans</option><br><br>
     <div id="dynamic-content"></div><br><br>
     <input type="submit" value="Submit"><br><br>
+    <div id="live-preview">
+  <h2>Live Preview</h2>
+  <div id="preview-content">
+    <h1>I like Github</h1>
+  </div>
   </form>
 
   <script>
+  function updatePreview() {
+    const text = document.querySelector('#text-input').value;
+    const emoji = document.querySelector('#emoji-input').value;
+    const color = document.querySelector('#color-input').value;
+    const background = document.querySelector('#background-input').value;
+    const background2 = document.querySelector('#background2-input').value;
+    const font = document.querySelector('#font-input').value;
+    
+    const previewContent = document.querySelector('#preview-content');
+    const previewText = document.createElement('h1');
+    previewText.textContent = text + ' ' + emoji;
+    previewText.style.color = color;
+    previewText.style.fontFamily = font;
+    
+    if (background2) {
+      previewContent.style.background = `linear-gradient(to right, ${background}, ${background2})`;
+    } else {
+      previewContent.style.backgroundColor = background;
+    }
+    
+    previewContent.innerHTML = '';
+    previewContent.appendChild(previewText);
+  }
+
+  // Event listeners to trigger updatePreview function on form input change
+  const formInputs = document.querySelectorAll('input, select');
+  formInputs.forEach(input => {
+    input.addEventListener('change', updatePreview);
+  });
+
+  // Initial call to updatePreview to ensure live preview is updated on page load
+  updatePreview();
+    
  document.querySelector('#rainbow-input').addEventListener('change', (event) => {
   const rainbowChecked = event.target.checked;
   document.querySelector('#background-input').disabled = rainbowChecked;
