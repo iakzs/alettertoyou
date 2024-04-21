@@ -22,6 +22,8 @@
     <input type="color" id="background-input" name="background"><br><br>
     <label for="background2-input">Background Color 2:</label>
     <input type="color" id="background2-input" name="background2"><br><br>
+    <label for="image-input">Image URL:</label>
+  <input type="text" id="image-input" name="image"><br><br>
     <label for="font-input">Font: (beta)</label>
     <select id="font-input" name="font">
       <option value="Delicious Handrawn">Delicious Handrawn</option>
@@ -42,7 +44,13 @@
       <option value="center">Center</option>
       <option value="right">Right</option>
     </select><br><br>
-      
+    <label for="animation-input">Animation:</label>
+    <select id="animation-input" name="animation">
+      <option value="none">None</option>
+      <option value="fade-in">Fade In</option>
+      <option value="slide-in">Slide In</option>
+      <option value="rotate">Rotate</option>
+    </select><br><br>
     <div id="dynamic-content"></div><br><br>
     <input type="submit" value="Submit"><br><br>
     <div id="live-preview">
@@ -108,7 +116,9 @@ document.querySelector('#customize-form').addEventListener('submit', (event) => 
   const size = document.querySelector('#size-input').value;
   const weight = document.querySelector('#weight-input').value;
   const align = document.querySelector('#align-input').value;
-  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&size=${encodeURIComponent(size)}&weight=${encodeURIComponent(weight)}&align=${encodeURIComponent(align)}`;
+  const image = document.querySelector('#image-input').value;
+  const animation = document.querySelector('#animation-input').value;
+  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&size=${encodeURIComponent(size)}&weight=${encodeURIComponent(weight)}&align=${encodeURIComponent(align)}&image=${encodeURIComponent(image)}&animation=${encodeURIComponent(animation)}`;
   window.location.href = url;
 });
 

@@ -78,6 +78,7 @@
     const size = urlParams.get('size') || '100';
     const weight = urlParams.get('weight') || 'normal';
     const align = urlParams.get('align') || 'left';
+    const animation = urlParams.get('animation') || 'none';
 
     
     if (background2) {
@@ -100,6 +101,19 @@
     document.querySelector('h1').style.fontSize = size + 'px';
     document.querySelector('h1').style.fontWeight = weight;
     document.querySelector('h1').style.textAlign = align;
+
+    function applyAnimation(animation) {
+      const h1Element = document.querySelector('h1');
+      h1Element.classList.remove('animate__animated', 'animate__fadeIn', 'animate__slideInUp', 'animate__rotateIn');
+  
+      if (animation === 'none') {
+        h1Element.style.animation = 'none';
+      } else {
+        h1Element.classList.add('animate__animated', `animate__${animation}`);
+      }
+    }
+      applyAnimation(animation);
+
 
     function createHeart(x, y) {
       const heart = document.createElement('div');
