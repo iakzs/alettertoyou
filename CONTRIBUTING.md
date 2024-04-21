@@ -1,3 +1,4 @@
+Copyright (c) 2024 iakzs . MIT License
 # Contributing to alettertoyou
 
 Thank you for considering contributing to this project! By contributing, you help improve this project for everyone.
