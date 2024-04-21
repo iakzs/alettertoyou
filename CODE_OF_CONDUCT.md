@@ -1,3 +1,4 @@
+Copyright (c) 2024 iakzs . MIT License
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge
