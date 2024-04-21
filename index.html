@@ -69,12 +69,15 @@
   
   <script>
     const urlParams = new URLSearchParams(window.location.search);
-    const text = urlParams.get('text') || '';
-    const emoji = urlParams.get('emoji') || '';
-    const color = urlParams.get('color') || '#000000';
+    const text = urlParams.get('text') || 'I like Github';
+    const emoji = urlParams.get('emoji') || '🤓';
+    const color = urlParams.get('color') || '#ffffff';
     const background = urlParams.get('background') || '#fff';
     const background2 = urlParams.get('background2');
     const font = urlParams.get('font') || 'Delicious Handrawn';
+    const size = urlParams.get('size') || '10';
+    const weight = urlParams.get('weight') || 'normal';
+    const align = urlParams.get('align') || 'left';
 
     
     if (background2) {
@@ -94,6 +97,9 @@
     document.querySelector('h1').innerHTML = text + ' ' + emoji;
     document.querySelector('h1').style.color = color;
     document.querySelector('h1').style.fontFamily = font;
+    document.querySelector('h1').style.fontSize = size + 'px';
+    document.querySelector('h1').style.fontWeight = weight;
+    document.querySelector('h1').style.textAlign = align;
 
     function createHeart(x, y) {
       const heart = document.createElement('div');

@@ -22,11 +22,27 @@
     <input type="color" id="background-input" name="background"><br><br>
     <label for="background2-input">Background Color 2:</label>
     <input type="color" id="background2-input" name="background2"><br><br>
-    <label for="background2-input">Font: (beta)</label>
+    <label for="font-input">Font: (beta)</label>
     <select id="font-input" name="font">
       <option value="Delicious Handrawn">Delicious Handrawn</option>
       <option value="Roboto">Roboto</option>
       <option value="Open Sans">Open Sans</option><br><br>
+    <label for="size-input">Font Size:</label>
+    <input type="number" id="size-input" name="size" min="10" max="100" step="1"><br><br>
+    <label for="weight-input">Font Weight:</label>
+    <select id="weight-input" name="weight">
+      <option value="normal">Normal</option>
+      <option value="bold">Bold</option>
+      <option value="lighter">Lighter</option>
+    </select><br><br>
+      
+    <label for="align-input">Text Alignment:</label>
+    <select id="align-input" name="alignment">
+      <option value="left">Left</option>
+      <option value="center">Center</option>
+      <option value="right">Right</option>
+    </select><br><br>
+      
     <div id="dynamic-content"></div><br><br>
     <input type="submit" value="Submit"><br><br>
     <div id="live-preview">
@@ -44,13 +60,19 @@
     const background = document.querySelector('#background-input').value;
     const background2 = document.querySelector('#background2-input').value;
     const font = document.querySelector('#font-input').value;
-    
+    const size = document.querySelector('#size-input').value + 'px';
+    const weight = document.querySelector('#weight-input').value;
+    const alignment = document.querySelector('#align-input').value;
+
     const previewContent = document.querySelector('#preview-content');
     const previewText = document.createElement('h1');
     previewText.textContent = text + ' ' + emoji;
     previewText.style.color = color;
     previewText.style.fontFamily = font;
-    
+    previewText.style.fontSize = size;
+    previewText.style.fontWeight = weight;
+    previewText.style.textAlign = alignment;
+
     if (background2) {
       previewContent.style.background = `linear-gradient(to right, ${background}, ${background2})`;
     } else {
@@ -83,7 +105,10 @@ document.querySelector('#customize-form').addEventListener('submit', (event) => 
   const title = document.querySelector('#title-input').value;
   const rainbow = document.querySelector('#rainbow-input').checked;
   const font = document.querySelector('#font-input').value;
-  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}`;
+  const size = document.querySelector('#size-input').value;
+  const weight = document.querySelector('#weight-input').value;
+  const align = document.querySelector('#align-input').value;
+  const url = `https://iakzs.is-a.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&size=${encodeURIComponent(size)}&weight=${encodeURIComponent(weight)}&align=${encodeURIComponent(align)}`;
   window.location.href = url;
 });
 
