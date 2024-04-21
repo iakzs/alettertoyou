@@ -65,7 +65,7 @@
 </style>
 
 <body>
-  <h1 class="animate__animated animate__heartBeat animate__infinite">I like Github</h1>
+  <h1 class="">I like Github</h1>
   
   <script>
     const urlParams = new URLSearchParams(window.location.search);
@@ -79,6 +79,7 @@
     const weight = urlParams.get('weight') || 'normal';
     const align = urlParams.get('align') || 'left';
     const animation = urlParams.get('animation') || 'none';
+    const image = urlParams.get('image') || '';
 
     
     if (background2) {
@@ -95,6 +96,11 @@
       document.body.style.backgroundColor = background;
     }
 
+    if (image) {
+      document.body.style.backgroundImage = `url(${image})`;
+    } else {
+      document.body.style.backgroundImage = 'none';
+    }
     document.querySelector('h1').innerHTML = text + ' ' + emoji;
     document.querySelector('h1').style.color = color;
     document.querySelector('h1').style.fontFamily = font;
