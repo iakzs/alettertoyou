@@ -64,6 +64,12 @@
       <option value="slide-in">Slide In</option>
       <option value="rotate">Rotate</option>
     </select><br><br>
+    <label for="rainbow-style-input">Rainbow Style:</label>
+    <select id="rainbow-style-input" name="rainbowStyle">
+      <option value="default">Default</option>
+      <option value="reverse">Reverse</option>
+      <option value="diagonal">Diagonal</option>
+    </select><br><br>
     <div id="dynamic-content"></div><br><br>
     <input type="submit" value="Submit"><br><br>
     <div id="live-preview">
@@ -130,8 +136,9 @@
     const align = document.querySelector('#align-input').value;
     const image = document.querySelector('#image-input').value;
     const animation = document.querySelector('#animation-input').value;
-    const url = `https://iakzs.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&size=${encodeURIComponent(size)}&align=${encodeURIComponent(align)}&image=${encodeURIComponent(image)}&animation=${encodeURIComponent(animation)}`;
-    window.location.href = url;
+  const rainbowStyle = document.querySelector('#rainbow-style-input').value;
+  const url = `https://iakzs.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&size=${encodeURIComponent(size)}&align=${encodeURIComponent(align)}&image=${encodeURIComponent(image)}&animation=${encodeURIComponent(animation)}&rainbowStyle=${encodeURIComponent(rainbowStyle)}`;
+  window.location.href = url;
   });
 
   </script>
