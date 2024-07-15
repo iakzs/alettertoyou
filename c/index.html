@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+CL:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <title>Customize ALTY</title>
   <style>
@@ -33,18 +36,21 @@
     <label for="font-input">Font: (beta)</label>
     <select id="font-input" name="font" onchange="updateFontPreview()">
       <option value="Delicious Handrawn" style="font-family: 'Delicious Handrawn';" class="font-preview-option">Delicious Handrawn</option>
-      <option value="Roboto" style="font-family: 'Roboto';" class="font-preview-option">Roboto</option>
-      <option value="Open Sans" style="font-family: 'Open Sans';" class="font-preview-option">Open Sans</option>
-      <option value="Playwrite" style="font-family: 'Playwrite';" class="font-preview-option">Playwrite</option>
+      <option value="Roboto" style="font-family: 'Roboto'; font-weight: 100;" class="font-preview-option">Roboto Thin</option>
+      <option value="Roboto" style="font-family: 'Roboto'; font-weight: 300;" class="font-preview-option">Roboto Light</option>
+      <option value="Roboto" style="font-family: 'Roboto'; font-weight: 400;" class="font-preview-option">Roboto Regular</option>
+      <option value="Roboto" style="font-family: 'Roboto'; font-weight: 500;" class="font-preview-option">Roboto Medium</option>
+      <option value="Roboto" style="font-family: 'Roboto'; font-weight: 700;" class="font-preview-option">Roboto Bold</option>
+      <option value="Roboto" style="font-family: 'Roboto'; font-weight: 900;" class="font-preview-option">Roboto Black</option>
+      <option value="Open Sans" style="font-family: 'Open Sans'; font-weight: 300;" class="font-preview-option">Open Sans Light</option>
+      <option value="Open Sans" style="font-family: 'Open Sans'; font-weight: 400;" class="font-preview-option">Open Sans Regular</option>
+      <option value="Open Sans" style="font-family: 'Open Sans'; font-weight: 600;" class="font-preview-option">Open Sans Semi-Bold</option>
+      <option value="Open Sans" style="font-family: 'Open Sans'; font-weight: 700;" class="font-preview-option">Open Sans Bold</option>
+      <option value="Playwrite CL" style="font-family: 'Playwrite CL'; font-weight: 100;" class="font-preview-option">Playwrite Thin</option>
+      <option value="Playwrite CL" style="font-family: 'Playwrite CL'; font-weight: 400;" class="font-preview-option">Playwrite Regular</option>
     </select><br><br>
     <label for="size-input">Font Size:</label>
-    <input type="number" id="size-input" name="size" min="10" max="100" step="1" onchange="updateFontPreview()"><br><br>
-    <label for="weight-input">Font Weight:</label>
-    <select id="weight-input" name="weight" onchange="updateFontPreview()">
-      <option value="normal">Normal</option>
-      <option value="bold">Bold</option>
-      <option value="lighter">Lighter</option>
-    </select><br><br>
+    <input type="number" id="size-input" name="size" min="10" max="100" step="1" onchange="updatePreview()"><br><br>
     <label for="align-input">Text Alignment:</label>
     <select id="align-input" name="alignment">
       <option value="left">Left</option>
@@ -77,7 +83,6 @@
     const background2 = document.querySelector('#background2-input').value;
     const font = document.querySelector('#font-input').value;
     const size = document.querySelector('#size-input').value + 'px';
-    const weight = document.querySelector('#weight-input').value;
     const alignment = document.querySelector('#align-input').value;
 
     const previewContent = document.querySelector('#preview-content');
@@ -86,7 +91,6 @@
     previewText.style.color = color;
     previewText.style.fontFamily = font;
     previewText.style.fontSize = size;
-    previewText.style.fontWeight = weight;
     previewText.style.textAlign = alignment;
 
     if (background2) {
@@ -97,16 +101,6 @@
 
     previewContent.innerHTML = '';
     previewContent.appendChild(previewText);
-  }
-
-  function updateFontPreview() {
-    const fontSelect = document.querySelector('#font-input');
-    const selectedOption = fontSelect.options[fontSelect.selectedIndex];
-    const size = document.querySelector('#size-input').value + 'px';
-    const weight = document.querySelector('#weight-input').value;
-
-    selectedOption.style.fontSize = size;
-    selectedOption.style.fontWeight = weight;
   }
 
   const formInputs = document.querySelectorAll('input, select');
@@ -133,13 +127,17 @@
     const rainbow = document.querySelector('#rainbow-input').checked;
     const font = document.querySelector('#font-input').value;
     const size = document.querySelector('#size-input').value;
-    const weight = document.querySelector('#weight-input').value;
     const align = document.querySelector('#align-input').value;
     const image = document.querySelector('#image-input').value;
     const animation = document.querySelector('#animation-input').value;
-    const url = `https://iakzs.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&size=${encodeURIComponent(size)}&weight=${encodeURIComponent(weight)}&align=${encodeURIComponent(align)}&image=${encodeURIComponent(image)}&animation=${encodeURIComponent(animation)}`;
+    const url = `https://iakzs.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&size=${encodeURIComponent(size)}&align=${encodeURIComponent(align)}&image=${encodeURIComponent(image)}&animation=${encodeURIComponent(animation)}`;
     window.location.href = url;
   });
+
+  </script>
+</body>
+</html>
+
 
   </script>
 </body>
