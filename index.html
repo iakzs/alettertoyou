@@ -23,13 +23,13 @@
     .heart.fade-out {
       opacity: 0;
     }
-
+/* maybe i will add this again someday.
     @keyframes heartbeat {
       0% { transform: scale(1); }
       50% { transform: scale(1.2); }
       100% { transform: scale(1); }
     }
-
+*/
     @keyframes rainbow {
       0% { background: red; }
       14% { background: orange; }
@@ -40,7 +40,27 @@
       85% { background: violet; }
       100% { background: red; }
     }
+    @keyframes rainbow-reverse {
+      0% { background: violet; }
+      14% { background: indigo; }
+      28% { background: blue; }
+      42% { background: green; }
+      57% { background: yellow; }
+      71% { background: orange; }
+      85% { background: red; }
+      100% { background: violet; }
+    }
 
+    @keyframes rainbow-diagonal {
+      0% { background: red; }
+      14% { background: orange; }
+      28% { background: yellow; }
+      42% { background: green; }
+      57% { background: blue; }
+      71% { background: indigo; }
+      85% { background: violet; }
+      100% { background: red; }
+    }
     body {
       display: flex;
       justify-content: center;
@@ -79,9 +99,22 @@
     }
 
     if (urlParams.get('israinbow') === 'true') {
-      document.body.style.background = 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)';
-      document.body.style.backgroundSize = '400% 400%';
-      document.body.style.animation = 'rainbow 5s linear infinite';
+      switch(rainbowStyle) {
+        case 'reverse':
+          document.body.style.background = 'linear-gradient(to right, violet,indigo,blue,green,yellow,orange,red)';
+          document.body.style.backgroundSize = '400% 400%';
+          document.body.style.animation = 'rainbow-reverse 5s linear infinite';
+          break;
+        case 'diagonal':
+          document.body.style.background = 'linear-gradient(45deg, red,orange,yellow,green,blue,indigo,violet)';
+          document.body.style.backgroundSize = '400% 400%';
+          document.body.style.animation = 'rainbow-diagonal 5s linear infinite';
+          break;
+        default:
+          document.body.style.background = 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)';
+          document.body.style.backgroundSize = '400% 400%';
+          document.body.style.animation = 'rainbow 5s linear infinite';
+      }
     } else {
       document.body.style.backgroundColor = background;
     }
@@ -101,11 +134,19 @@
 
     function applyAnimation(animation) {
       h1Element.classList.remove('animate__animated', 'animate__fadeIn', 'animate__slideInUp', 'animate__rotateIn');
-  
-      if (animation === 'none') {
-        h1Element.style.animation = 'none';
-      } else {
-        h1Element.classList.add('animate__animated', `animate__${animation}`);
+
+      switch(animation) {
+        case 'fade-in':
+          h1Element.classList.add('animate__animated', 'animate__fadeIn');
+          break;
+        case 'slide-in':
+          h1Element.classList.add('animate__animated', 'animate__slideInUp');
+          break;
+        case 'rotate':
+          h1Element.classList.add('animate__animated', 'animate__rotateIn');
+          break;
+        default:
+          h1Element.style.animation = 'none';
       }
     }
     applyAnimation(animation);
