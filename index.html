@@ -3,71 +3,61 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maxium-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>alty</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+CL:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playwrite+CL:wght@100..400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    .heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3em;
+      animation: heartbeat 1s infinite;
+      transition: opacity 1s;
+    }
+
+    .heart.fade-out {
+      opacity: 0;
+    }
+
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes rainbow {
+      0% { background: red; }
+      14% { background: orange; }
+      28% { background: yellow; }
+      42% { background: green; }
+      57% { background: blue; }
+      71% { background: indigo; }
+      85% { background: violet; }
+      100% { background: red; }
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-family: 'Delicious Handrawn', cursive;
+      font-size: 10vw;
+      color: #ff00ff;
+      margin-top: 10%;
+      text-align: center;
+    }
+  </style>
 </head>
-
-<style>
-  .heart {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3em;
-    animation: heartbeat 1s infinite;
-    transition: opacity 1s;
-  }
-
-  .heart.fade-out {
-    opacity: 0;
-  }
-
-  @keyframes heartbeat {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.2);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-
-  @keyframes rainbow {
-    0% {background: red;}
-    14% {background: orange;}
-    28% {background: yellow;}
-    42% {background: green;}
-    57% {background: blue;}
-    71% {background: indigo;}
-    85% {background: violet;}
-    100% {background: red;}
-  }
-
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  h1 {
-    font-family: 'Delicious Handrawn', cursive;
-    font-size: 10vw;
-    color: #ff00ff;
-    margin-top: 10%;
-    text-align: center;
-  }
-</style>
-
 <body>
-  <h1 class="">I like Github</h1>
+  <h1>I like Github</h1>
   
   <script>
     const urlParams = new URLSearchParams(window.location.search);
@@ -78,12 +68,10 @@
     const background2 = urlParams.get('background2') || '#514D86';
     const font = urlParams.get('font') || 'Delicious Handrawn';
     const size = urlParams.get('size') || '100';
-    const weight = urlParams.get('weight') || 'normal';
     const align = urlParams.get('align') || 'left';
     const animation = urlParams.get('animation') || 'none';
     const image = urlParams.get('image') || '';
 
-    
     if (background2) {
       document.body.style.background = `linear-gradient(to right, ${background}, ${background2})`;
     } else {
@@ -103,15 +91,15 @@
     } else {
       document.body.style.backgroundImage = 'none';
     }
-    document.querySelector('h1').innerHTML = text + ' ' + emoji;
-    document.querySelector('h1').style.color = color;
-    document.querySelector('h1').style.fontFamily = font;
-    document.querySelector('h1').style.fontSize = size + 'px';
-    document.querySelector('h1').style.fontWeight = weight;
-    document.querySelector('h1').style.textAlign = align;
+    
+    const h1Element = document.querySelector('h1');
+    h1Element.innerHTML = text + ' ' + emoji;
+    h1Element.style.color = color;
+    h1Element.style.fontFamily = font;
+    h1Element.style.fontSize = size + 'px';
+    h1Element.style.textAlign = align;
 
     function applyAnimation(animation) {
-      const h1Element = document.querySelector('h1');
       h1Element.classList.remove('animate__animated', 'animate__fadeIn', 'animate__slideInUp', 'animate__rotateIn');
   
       if (animation === 'none') {
@@ -120,8 +108,7 @@
         h1Element.classList.add('animate__animated', `animate__${animation}`);
       }
     }
-      applyAnimation(animation);
-
+    applyAnimation(animation);
 
     function createHeart(x, y) {
       const heart = document.createElement('div');
@@ -135,8 +122,8 @@
         heart.classList.add('fade-out');
         setTimeout(() => {
           heart.remove();
-        }, 30000);
-      }, 60000);
+        }, 1000);
+      }, 1000);
     }
 
     document.body.addEventListener('click', (event) => {
@@ -144,12 +131,13 @@
     });
 
     setInterval(() => {
-      createHeart(Math.random() * window.innerWidth, Math.random() * window.innerHeight)
+      createHeart(Math.random() * window.innerWidth, Math.random() * window.innerHeight);
     }, 500);
 
     const title = urlParams.get('title');
-    document.title = title;
-
+    if (title) {
+      document.title = title;
+    }
   </script>
 </body>
 </html>
