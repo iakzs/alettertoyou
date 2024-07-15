@@ -91,7 +91,8 @@
     const align = urlParams.get('align') || 'left';
     const animation = urlParams.get('animation') || 'none';
     const image = urlParams.get('image') || '';
-    const rainbowStylw = urlParams.get('rainbowStyle') || 'none';
+    const rainbowStyle = urlParams.get('rainbowStyle') || 'none';
+    
     if (background2) {
       document.body.style.background = `linear-gradient(to right, ${background}, ${background2})`;
     } else {
