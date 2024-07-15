@@ -4,6 +4,12 @@
 <head>
   <link rel="stylesheet" href="styles.css">
   <title>Customize ALTY</title>
+  <style>
+    .font-preview-option {
+      display: block;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
   <h1>Customize alettertoyou</h1>
@@ -23,21 +29,21 @@
     <label for="background2-input">Background Color 2:</label>
     <input type="color" id="background2-input" name="background2"><br><br>
     <label for="image-input">Image URL:</label>
-  <input type="text" id="image-input" name="image"><br><br>
+    <input type="text" id="image-input" name="image"><br><br>
     <label for="font-input">Font: (beta)</label>
-    <select id="font-input" name="font">
-      <option value="Delicious Handrawn">Delicious Handrawn</option>
-      <option value="Roboto">Roboto</option>
-      <option value="Open Sans">Open Sans</option><br><br>
+    <select id="font-input" name="font" onchange="updateFontPreview()">
+      <option value="Delicious Handrawn" style="font-family: 'Delicious Handrawn';" class="font-preview-option">Delicious Handrawn</option>
+      <option value="Roboto" style="font-family: 'Roboto';" class="font-preview-option">Roboto</option>
+      <option value="Open Sans" style="font-family: 'Open Sans';" class="font-preview-option">Open Sans</option>
+    </select><br><br>
     <label for="size-input">Font Size:</label>
-    <input type="number" id="size-input" name="size" min="10" max="100" step="1"><br><br>
+    <input type="number" id="size-input" name="size" min="10" max="100" step="1" onchange="updateFontPreview()"><br><br>
     <label for="weight-input">Font Weight:</label>
-    <select id="weight-input" name="weight">
+    <select id="weight-input" name="weight" onchange="updateFontPreview()">
       <option value="normal">Normal</option>
       <option value="bold">Bold</option>
       <option value="lighter">Lighter</option>
     </select><br><br>
-      
     <label for="align-input">Text Alignment:</label>
     <select id="align-input" name="alignment">
       <option value="left">Left</option>
@@ -54,10 +60,11 @@
     <div id="dynamic-content"></div><br><br>
     <input type="submit" value="Submit"><br><br>
     <div id="live-preview">
-  <h2>Live Preview (very limited)</h2>
-  <div id="preview-content">
-    <h1>I like Github</h1>
-  </div>
+      <h2>Live Preview (very limited)</h2>
+      <div id="preview-content">
+        <h1>I like Github</h1>
+      </div>
+    </div>
   </form>
 
   <script>
@@ -86,9 +93,19 @@
     } else {
       previewContent.style.backgroundColor = background;
     }
-    
+
     previewContent.innerHTML = '';
     previewContent.appendChild(previewText);
+  }
+
+  function updateFontPreview() {
+    const fontSelect = document.querySelector('#font-input');
+    const selectedOption = fontSelect.options[fontSelect.selectedIndex];
+    const size = document.querySelector('#size-input').value + 'px';
+    const weight = document.querySelector('#weight-input').value;
+
+    selectedOption.style.fontSize = size;
+    selectedOption.style.fontWeight = weight;
   }
 
   const formInputs = document.querySelectorAll('input, select');
@@ -97,30 +114,31 @@
   });
 
   updatePreview();
-    
- document.querySelector('#rainbow-input').addEventListener('change', (event) => {
-  const rainbowChecked = event.target.checked;
-  document.querySelector('#background-input').disabled = rainbowChecked;
-  document.querySelector('#background2-input').disabled = rainbowChecked;
-});
-document.querySelector('#customize-form').addEventListener('submit', (event) => {
-  event.preventDefault();
-  const text = document.querySelector('#text-input').value;
-  const emoji = document.querySelector('#emoji-input').value;
-  const color = document.querySelector('#color-input').value;
-  const background = document.querySelector('#background-input').value;
-  const background2 = document.querySelector('#background2-input').value;
-  const title = document.querySelector('#title-input').value;
-  const rainbow = document.querySelector('#rainbow-input').checked;
-  const font = document.querySelector('#font-input').value;
-  const size = document.querySelector('#size-input').value;
-  const weight = document.querySelector('#weight-input').value;
-  const align = document.querySelector('#align-input').value;
-  const image = document.querySelector('#image-input').value;
-  const animation = document.querySelector('#animation-input').value;
-  const url = `https://iakzs.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&size=${encodeURIComponent(size)}&weight=${encodeURIComponent(weight)}&align=${encodeURIComponent(align)}&image=${encodeURIComponent(image)}&animation=${encodeURIComponent(animation)}`;
-  window.location.href = url;
-});
+
+  document.querySelector('#rainbow-input').addEventListener('change', (event) => {
+    const rainbowChecked = event.target.checked;
+    document.querySelector('#background-input').disabled = rainbowChecked;
+    document.querySelector('#background2-input').disabled = rainbowChecked;
+  });
+
+  document.querySelector('#customize-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    const text = document.querySelector('#text-input').value;
+    const emoji = document.querySelector('#emoji-input').value;
+    const color = document.querySelector('#color-input').value;
+    const background = document.querySelector('#background-input').value;
+    const background2 = document.querySelector('#background2-input').value;
+    const title = document.querySelector('#title-input').value;
+    const rainbow = document.querySelector('#rainbow-input').checked;
+    const font = document.querySelector('#font-input').value;
+    const size = document.querySelector('#size-input').value;
+    const weight = document.querySelector('#weight-input').value;
+    const align = document.querySelector('#align-input').value;
+    const image = document.querySelector('#image-input').value;
+    const animation = document.querySelector('#animation-input').value;
+    const url = `https://iakzs.dev/alettertoyou?text=${encodeURIComponent(text)}&emoji=${encodeURIComponent(emoji)}&color=${encodeURIComponent(color)}&background=${encodeURIComponent(background)}&background2=${encodeURIComponent(background2)}&title=${encodeURIComponent(title)}&israinbow=${encodeURIComponent(rainbow)}&font=${encodeURIComponent(font)}&size=${encodeURIComponent(size)}&weight=${encodeURIComponent(weight)}&align=${encodeURIComponent(align)}&image=${encodeURIComponent(image)}&animation=${encodeURIComponent(animation)}`;
+    window.location.href = url;
+  });
 
   </script>
 </body>
