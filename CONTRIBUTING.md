@@ -22,15 +22,10 @@ Please follow these coding standards and guidelines when contributing to this pr
 
 - Use consistent indentation (spaces or tabs).
 - Follow the naming conventions for variables, functions, and classes.
-- Write clear and concise comments to explain complex logic or functionality. (Optional)
-- Write descriptive commit messages that explain the purpose of your changes.
+- Write descriptive commit messages that explain the purpose of your changes. (opcional)
 
-## Reporting Issues
+## Reporting Issues and suggestions
 
 If you encounter any issues or have suggestions for improvements, please report them using the GitHub issue tracker. Provide as much detail as possible, including steps to reproduce the issue if applicable.
-
-## Code of Conduct
-
-Please note that this project is governed by a Code of Conduct. By participating in this project, you agree to abide by its terms.
 
 Thank you for your contributions and for helping to make this project better for everyone!
